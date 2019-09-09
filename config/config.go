@@ -1,6 +1,7 @@
 package config
 
 import (
+	"os"
 	"bytes"
 	"fmt"
 	"net/url"
@@ -502,7 +503,7 @@ func SetupViper(v *viper.Viper, filename string) {
 	// (basically so viper knows they exist)
 	v.SetDefault("external_url", "https://0.0.0.0")
 	v.SetDefault("host", "")
-	// v.SetDefault("port", 8000)
+	v.SetDefault("port", os.Getenv("PORT"))
 	v.SetDefault("admin_port", 6060)
 	v.SetDefault("enable_gzip", false)
 	v.SetDefault("status_response", "")
